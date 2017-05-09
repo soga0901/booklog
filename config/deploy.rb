@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '<Capistranoのバージョン>'
+lock '3.8.1'
 
 set :application, 'booklog'
 set :repo_url, 'git@github.com:github.git'
