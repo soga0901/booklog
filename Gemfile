@@ -15,8 +15,8 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
-group :production, :staging do
-    gem 'unicorn'
+group :production do
+  gem 'unicorn'
 end
 
 group :development, :test do
