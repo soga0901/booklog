@@ -1,24 +1,93 @@
 # README
+  ## Databases
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  ### USERS
 
-Things you may want to cover:
+| column   | type             |
+|:---------|:-----------------|
+| id       |integer(NOT NULL) |
+| name     |string(NOT NULL)  |
+| email    |text(NOT NULL)    |
+| password |string(NOT NULL)  |
 
-* Ruby version
+  #### Association
+    has_one :shelf
+    has_many :reviews
+    has_many :books
 
-* System dependencies
 
-* Configuration
+  ### BOOKS
 
-* Database creation
+| column       | type             |
+|:-------------|:-----------------|
+| id           |integer(NOT NULL) |
+| title        |string(NOT NULL)  |
+| author       |text(NOT NULL)    |
+| release_date |text              |
+| price        |string            |
 
-* Database initialization
 
-* How to run the test suite
+  ### SHELFS
 
-* Services (job queues, cache servers, search engines, etc.)
+| column   | type             |
+|:---------|:-----------------|
+| id       |integer(NOT NULL) |
+| name     |string(NOT NULL)  |
+| user_id  |integer(NOT NULL) |
 
-* Deployment instructions
+  #### Association
+    belongs_to :user
+    has_many :reviews
+    has_many :books :through => :book_shelfs
 
-* ...
+  #### Index
+    add_index :group_users, [:user_id]
+
+
+  ### BOOK_SHELFS
+
+| column   | type              |
+|:---------|:------------------|
+| id       | integer(NOT NULL) |
+| book_id  | integer(NOT NULL) |
+| shelf_id | integer(NOT NULL) |
+
+  #### Association
+    belongs_to :book
+    belongs_to :shelf
+
+  #### Index
+    add_index :book_shelfs, [:book_id, shelf_id]
+
+
+  ### REVIEWS
+
+| column    | type              |
+|:----------|:------------------|
+| id        | integer(NOT NULL) |
+| text      | text              |
+| rate      | integer(NOT NULL) |
+| user_id   | integer(NOT NULL) |
+| book_id   | integer(NOT NULL) |
+| shelf_id  | integer(NOT NULL) |
+| status_id | integer           |
+
+  #### Association
+    belongs_to :user
+    belongs_to :book
+    belongs_to :shelf
+    belongs_to :status
+
+  #### Index
+    add_index :rebiews, [:user_id, :book_id, :shelf_id, :satus_id]
+
+
+  ### STATUSES
+
+| column    | type              |
+|:----------|:------------------|
+| id        | integer(NOT NULL) |
+| state     | string(NOT NULL)  |
+
+  #### Association
+    has_many :reviews
