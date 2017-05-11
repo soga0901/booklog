@@ -1,0 +1,53 @@
+.global-navi {
+  height: 60px;
+  background-color: #8BAFBF;
+
+  &-inner {
+    width: 100%;
+    height: 60px;
+    margin-left: 24px;
+    float: left;
+    line-height: 60px;
+  }
+  .global-navi--left {
+    color: #ffffff;
+    .navi-manu {
+      margin-right: 20px;
+      float: left;
+    }
+    .top-icon {
+      float: left;
+      margin-right: 30px;
+    }
+    .navi-menu {
+      height: 60px;
+    }
+    .menu--lists {
+      float: left;
+    }
+    .book--search--field {
+      margin: 15px 0;
+      width: 240px;
+      height: 30px;
+      border: 1px;
+    }
+    .book--search--btn {
+      height: 30px;
+      background-color: white;
+      margin: 15px 0;
+      border: 1px;
+    }
+  }
+
+  &--right {
+    width: 220px;
+    float: right;
+    color: #ffffff;
+    margin-right: 24px;
+
+  .navi-menu--right {
+    float: left
+    }
+  }
+
+}
