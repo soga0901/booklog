@@ -73,10 +73,10 @@
 | status_id | integer           |
 
   #### Association
-   belongs_to :user
-   belongs_to :book
-   belongs_to :shelf
-   belongs_to :status
+    belongs_to :user
+    belongs_to :book
+    belongs_to :shelf
+    belongs_to :status
 
   #### Index
     add_index :rebiews, [:user_id, :book_id, :shelf_id, :satus_id]
