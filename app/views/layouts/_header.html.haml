@@ -1,0 +1,17 @@
+%header
+  .global-navi.global-navi-login.clearFix
+    .global-navi-inner
+      .global-navi--left
+        = image_tag("top-logout.png", :alt => "アイコン", :class => "navi-menu top-icon")
+        %ul.menu--lists
+          %li.navi-manu ランキング
+          %li.navi-manu 新刊情報
+          %li.navi-manu 談話室
+          %li.navi-manu まとめ
+        %input.book--search--field.navi-manu{:name => "name", :placeholder => "作品・著者名で検索して本棚登録", :type => "text"}/
+        %input.book--search--btn.navi-manu{:type => "button", :value => "検索"}/
+      .global-navi--right
+        %span.registration-btn
+          新規登録
+        %span.login-btn
+          ログイン
