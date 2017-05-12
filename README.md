@@ -13,7 +13,6 @@
   #### Association
     has_one :shelf
     has_many :reviews
-    has_many :books
 
 
   ### BOOKS
@@ -25,6 +24,10 @@
 | author       |text(NOT NULL)    |
 | release_date |text              |
 | price        |string            |
+
+  #### Association
+    has_many :reviews
+    has_many :shelf :through => :book_shelfs
 
 
   ### SHELFS
