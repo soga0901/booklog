@@ -2,7 +2,11 @@
   .global-navi.global-navi-login.clearFix
     .global-navi-inner
       .global-navi--left
-        = image_tag("top-logout.png", :alt => "アイコン", :class => "navi-menu top-icon")
+        = link_to root_path do
+          - if user_signed_in?
+            = image_tag("booklog_top.png", :alt => "アイコン", :class => "navi-menu top-icon")
+          - else
+            = image_tag("top-logout.png", :alt => "アイコン", :class => "navi-menu top-icon")
         %ul.menu--lists
           %li.navi-manu ランキング
           %li.navi-manu 新刊情報
@@ -11,7 +15,8 @@
         %input.book--search--field.navi-manu{:name => "name", :placeholder => "作品・著者名で検索して本棚登録", :type => "text"}/
         %input.book--search--btn.navi-manu{:type => "button", :value => "検索"}/
       .global-navi--right
-        %span.registration-btn
-          新規登録
-        %span.login-btn
-          ログイン
+        - if user_signed_in?
+          = link_to "ログアウト", destroy_user_session_path, class: "logout-btn link-btn", method: :delete
+        - else
+          = link_to "新規登録", new_user_registration_path, class: "registration-btn link-btn"
+          = link_to "ログイン", new_user_session_path, class: "login-btn link-btn"
