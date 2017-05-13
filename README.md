@@ -23,6 +23,7 @@
 | title        |string(NOT NULL)  |
 | author       |text(NOT NULL)    |
 | release_date |text              |
+| price        |publisher         |
 | price        |string            |
 
   #### Association
