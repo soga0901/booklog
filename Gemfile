@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'devise'
+gem 'font-awesome-rails'
 
 group :production do
   gem 'unicorn'

@@ -1,3 +1,4 @@
 .container
-  %p
-    = "ブクログ > " + current_user.name + "さんのホーム"
+  %p.root-path
+    = link_to "ブクログ ", root_path, class: "text-link link-btn"
+    = " > " + @user.name + "さんの本棚"

@@ -32,11 +32,12 @@
 
   ### SHELFS
 
-| column   | type             |
-|:---------|:-----------------|
-| id       |integer(NOT NULL) |
-| name     |string(NOT NULL)  |
-| user_id  |integer(NOT NULL) |
+| column      | type             |
+|:------------|:-----------------|
+| id          |integer(NOT NULL) |
+| name        |string(NOT NULL)  |
+| user_id     |integer(NOT NULL) |
+| introducing |integer(NOT NULL) |
 
   #### Association
     belongs_to :user

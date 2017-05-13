@@ -1,6 +1,10 @@
-.contains {
+#contains {
   background-color: #FFFBF1;
   overflow: auto;
+}
+#contains:after {
+  content: "";
+  display: block;
 }
 
   .global-navi {
@@ -38,11 +42,26 @@
         width: 240px;
         height: 30px;
       }
-      .book--search--btn {
-        height: 29px;
-        background-color: white;
-        margin: 15px 0;
-        border: 1px;
+      .fa-search {
+        margin-top: 15px;
+        box-sizing: border-box;
+        height: 30px;
+        width: 35px;
+        padding: 6px 0 8px 0;
+        text-align: center;
+        box-sizing: border-box;
+        font-size: 16px;
+        color: #555555;
+        background-color: #ffffff;
+        border: solid thin #D8D9D9;
+        cursor: pointer;
+      }
+      .fa-search:hover {
+        height: 30px;
+        color: #ffffff;
+        box-sizing: border-box;
+        background-color: #38aef0;
+        border: none;
       }
     }
 
@@ -90,3 +109,37 @@
 .link-btn:visited {
   color: #ffffff;
   }
+
+.footer-body {
+  clear: both;
+  padding-top: 15px;
+  background-color: #E4E4E4;
+  overflow: auto;
+  .footer-list {
+    background-color: #FFFFFF;
+    margin: 15px auto 20px;
+    height: 200px;
+    width: 900px;
+    border-radius: 8px;
+  }
+  h1 {
+    padding: 15px 0 20px 10px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  .copyrights {
+    color: #848484;
+    font-size: 8px;
+    width: 900px;
+    margin: 10px auto;
+  }
+  .agreement  {
+    font-size: 8px;
+    float: left;
+  }
+  .copyright {
+    font-size: 8px;
+    float: right;
+    margin-bottom: 10px;
+  }
+}

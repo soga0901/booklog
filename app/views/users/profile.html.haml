@@ -1,0 +1,88 @@
+.container
+  .left-content
+    %p.root-path
+      = link_to "ブクログ ", root_path, class: "text-link link-btn"
+      >
+      = link_to @user.name + "さんの本棚", user_path(@user), class: "text-link link-btn"
+      > プロフィール
+    .user-wrapper
+      .user-prof
+        = link_to user_path(@user) do
+          = image_tag("prof_noimage.gif", class: "prof-img-m")
+      .user-shelf
+        %h1
+          プロフィール
+          - if current_user.id = @user.id
+            = link_to edit_user_registration_path do
+              %i.fa.fa-gear
+        %p
+          = @user.name + "さん"
+      .user-activity
+      .user-social
+    %p.lead
+      1993年9月1日生まれの男性(仮)
+    %table.prof-table
+      %tr
+        %td.prof-item
+          名前
+        %td.prof-info
+          = @user.name
+      %tr
+        %td.prof-item
+          本棚の名前
+        %td.prof-info
+          = link_to @user.name + "の本棚", user_path(@user), class: "text-link"
+      %tr
+        %td.prof-item
+          本棚の紹介文
+        %td.prof-info
+          良いです(仮)
+      %tr
+        %td.prof-item
+          性別
+        %td.prof-info
+          男性(仮)
+      %tr
+        %td.prof-item
+          生年月日
+        %td.prof-info
+          1993年 09月 01月生まれ(仮)
+    %ul.prof-lists
+      %li.prof-list
+        プロフィール
+      %li.prof-data
+        自己紹介を書く
+      %li.prof-list
+        パーソナルタグ
+      %li.prof-data
+        パーソナルタグを設定する
+      %li.prof-list
+        興味のあるジャンル
+      %li.prof-data
+        興味のあるジャンルを設定する
+      %li.prof-list
+        好きな作家など
+      %li.prof-data
+        好きな作家を設定する
+      %li.prof-list
+        お気に入りベスト3
+      %li.prof-data
+        %table.favorite-three
+          %tr
+            %td.favorite-rank.favorite-rank-1
+              1
+            %td.favorite-data
+              設定
+            %td.favorite-rank.favorite-rank-2
+              2
+            %td.favorite-data
+              設定
+            %td.favorite-rank.favorite-rank-3
+              3
+            %td.favorite-data
+              設定
+      %li.prof-list
+        読書目標
+      %li.prof-data.last-line
+        読書目標を設定する
+  .right-content
