@@ -1,4 +1,9 @@
-@import "./reset";
-@import "./style";
-@import "./root";
-@import "./devise"
+/*
+*= require font-awesome
+*/
+
+@import "reset";
+@import "style";
+@import "root";
+@import "devise";
+@import "user";

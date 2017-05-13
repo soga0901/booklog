@@ -1,0 +1,137 @@
+.container{
+  margin: 0 auto;
+  width: 980px;
+
+  .left-content {
+    width: 650px;
+    float: left;
+  }
+
+  .root-path {
+    margin-top: 20px;
+    .text-link {
+      color: #4EA6CC;
+    }
+    .text-link:visited {
+      color: #4EA6CC;
+    }
+  }
+
+  .user-wrapper {
+    margin-top: 20px;
+    width: 650px;
+    height: 203px;
+    background-color: #ffffff;
+    border-radius: 8px;
+
+    .user-prof {
+      width: 90px;
+      height: 203px;
+      float: left;
+      margin: 15px 40px 15px 15px;
+
+      .prof-img-m {
+        height: 90px;
+        width: 90px;
+        border-radius: 8px;
+      }
+    }
+    .user-shelf {
+      width: 500px;
+      margin-top: 15px;
+      float: left;
+
+      h1 {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .fa-gear {
+        float: right;
+        font-size: 14px;
+        padding: 5px 10px;
+        color: #B4B4B4;
+        background-color: #F0F0F0;
+        margin-top: 6px;
+        border-radius: 5px;
+      }
+      .fa-gear:hover {
+        opacity: 0.5;
+      }
+      p {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .lead {
+    margin: 15px 0;
+    clear: both;
+  }
+
+  .prof-table {
+    border-top: thick solid;
+    width: 650px;
+    tr {
+      border-bottom: solid thin #D8D9D9;
+    }
+    .prof-item {
+      background-color: #E8F6F5;
+      width: 200px;
+      height: 70px;
+      padding-left: 30px;
+    }
+    .prof-info {
+      background-color: #ffffff;
+      padding-left: 30px;
+    }
+  }
+
+  .prof-lists {
+    margin-top: 35px;
+    .prof-list {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .prof-data {
+      margin-bottom: 15px;
+      favorite-three {
+      }
+      .favorite-rank {
+        border: solid thin #D8D9D9;
+        height: 63px;
+        width: 18px;
+        text-align: center;
+        color: #ffffff;
+        font-weight: bold;
+        &-1 {
+          background-color: #DA4740;
+        }
+        &-2 {
+          background-color: #F58C29;
+        }
+        &-3 {
+          background-color: #89C600;
+        }
+      }
+      .favorite-data {
+        background-color: #ffffff;
+        border: solid thin #D8D9D9;
+        height: 63px;
+        width: 80px;
+        text-align: center;
+        font-size: 12px;
+      }
+    }
+    .last-line {
+      margin-bottom: 30px;
+    }
+  }
+  .right-content {
+    margin-top: 70px;
+    background-color: #F0F0F0;
+    height: 900px;
+    width: 300px;
+    float: right;
+    border-radius: 5px;
+  }
+}
