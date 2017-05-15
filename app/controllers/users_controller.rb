@@ -8,10 +8,6 @@ class UsersController < ApplicationController
   def profile
   end
 
-  def create
-    binding.pry
-  end
-
   private
   def set_user
     @user = User.find(params[:id])

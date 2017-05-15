@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170513051151) do
+ActiveRecord::Schema.define(version: 20170514175102) do
+
+  create_table "book_shelves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_shelves_on_book_id", using: :btree
+    t.index ["user_id"], name: "index_book_shelves_on_user_id", using: :btree
+  end
+
+  create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "publisher"
+    t.text     "image",         limit: 65535
+    t.integer  "release_year"
+    t.integer  "release_month"
+    t.integer  "release_day"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "price"
+  end
 
   create_table "shelves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -19,6 +41,12 @@ ActiveRecord::Schema.define(version: 20170513051151) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["user_id"], name: "index_shelves_on_user_id", using: :btree
+  end
+
+  create_table "statuses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "state",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -39,4 +67,6 @@ ActiveRecord::Schema.define(version: 20170513051151) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "book_shelves", "books"
+  add_foreign_key "book_shelves", "users"
 end

@@ -4,9 +4,9 @@
       .global-navi--left
         = link_to root_path do
           - if user_signed_in?
-            = image_tag("booklog_top.png", :alt => "アイコン", :class => "navi-menu top-icon")
+            = image_tag("booklog_top.png", alt: "アイコン", class: "navi-menu top-icon")
           - else
-            = image_tag("top-logout.png", :alt => "アイコン", :class => "navi-menu top-icon")
+            = image_tag("top-logout.png", alt: "アイコン", class: "navi-menu top-icon")
         %ul.menu--lists
           %li.navi-manu ランキング
           %li.navi-manu 新刊情報
