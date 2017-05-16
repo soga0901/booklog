@@ -7,5 +7,9 @@ Rails.application.routes.draw do
       get '/:id/profile', to: 'users#profile', as: 'profile'
     end
   end
-  resources :books, only: [:index]
+  resources :books, only: [:show] do
+    collection do
+      get 'search_result'
+    end
+  end
 end

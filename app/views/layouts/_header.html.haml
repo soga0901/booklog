@@ -12,9 +12,9 @@
           %li.navi-manu 新刊情報
           %li.navi-manu 談話室
           %li.navi-manu まとめ
-        = form_for books_path, method: :get do |f|
-          = f.text_field :name, placeholder: "作品・著者名で検索して本棚登録", class: "book--search--field navi-manu"
-          = f.submit class: "book-search-btn", style: "display:none;"
+        = form_tag(search_result_books_path, method: :get) do
+          = text_field_tag :info, params[:info], placeholder: "作品・著者名で検索して本棚登録", class: "book--search--field navi-manu"
+          = submit_tag '', class: "book-search-btn", style: "display:none;"
           %a.fa.fa-search
           .global-navi--right
             - if user_signed_in?

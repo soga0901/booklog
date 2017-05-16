@@ -19,6 +19,7 @@ gem 'erb2haml'
 gem 'devise'
 gem 'font-awesome-rails'
 gem 'kaminari'
+gem 'jquery-turbolinks'
 
 group :production do
   gem 'unicorn'
