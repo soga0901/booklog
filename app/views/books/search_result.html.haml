@@ -8,8 +8,8 @@
     #books-search
       = form_tag(search_result_books_path, method: :get) do
         = text_field_tag :info, params[:info], class: "book--search", placeholder: "作品・著者名で検索して本棚登録"
-        = submit_tag '', class: "book-search-btn", style: "display:none;"
-      %a.fa.fa-search.book-search-btn
+        = submit_tag '', class: "book-search-btn", id: 'book-search-btn-body',style: "display:none;"
+      %a.fa.fa-search#book-search--body
     %p.serch-introduction
       まずは商品名、著者名、出版社名などを入力して検索してください。</br>
       例えば...梅沢富美男や 梅沢富美男や 梅沢富美男など。
