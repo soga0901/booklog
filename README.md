@@ -23,6 +23,7 @@
 | title        |string(NOT NULL)  |
 | author       |text(NOT NULL)    |
 | release_date |text              |
+| price        |publisher         |
 | price        |string            |
 
   #### Association
@@ -30,7 +31,7 @@
     has_many :shelf :through => :book_shelfs
 
 
-  ### SHELFS
+  ### SHELVES
 
 | column      | type             |
 |:------------|:-----------------|
@@ -42,13 +43,13 @@
   #### Association
     belongs_to :user
     has_many :reviews
-    has_many :books :through => :book_shelfs
+    has_many :books :through => :book_shelves
 
   #### Index
     add_index :group_users, [:user_id]
 
 
-  ### BOOK_SHELFS
+  ### BOOK_SHELVES
 
 | column   | type              |
 |:---------|:------------------|
@@ -61,7 +62,7 @@
     belongs_to :shelf
 
   #### Index
-    add_index :book_shelfs, [:book_id, shelf_id]
+    add_index :book_shelves, [:book_id, shelf_id]
 
 
   ### REVIEWS

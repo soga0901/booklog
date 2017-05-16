@@ -1,0 +1,55 @@
+.container
+  .left-content
+    %p.root-path
+      = link_to "ブクログ ", root_path, class: "text-link"
+      > キーワードで検索(link:仮) > 検索ワード(仮)
+    %h1.search-heading
+      本の検索
+    #books-search
+      %input.book--search--field.book--search{:name => "name", :placeholder => "仮置き", :type => "text"}
+      %a.fa.fa-search.book-search-btn
+    %p.serch-introduction
+      まずは商品名、著者名、出版社名などを入力して検索してください。</br>
+      例えば...梅沢富美男や 梅沢富美男や 梅沢富美男など。
+    %h3.t10M
+      梅澤富美男(仮)の作品ランキング・新刊情報・電子書籍
+    .item-unit
+      %ul.units
+        %li.unit
+          おすすめ順
+        %li.unit
+          人気順
+        %li.unit
+          レビュー数順
+        %li.unit
+          新刊情報
+        %li.unit
+          電子書籍
+        %li
+          ※準備中
+    .edit-list
+      - @books.each do |book|
+        %table.tabletype-edit
+          %tbody
+            %tr.td-item
+              %td.td-info
+                .book-prof
+                  %h3.book-title
+                    = book.title
+                  .agregate
+                    %span.btn-users
+                      260人が登録(仮)
+                    %span.btn-rating
+                      ★4.21(仮)
+                    %span.btn-reviews
+                      10レビュー(仮)
+                  .desc-mini
+                    %p.book-info.book-author
+                      = book.author + " /  本(仮) / " + book.release_year.to_s + "年" + book.release_month.to_s + "月" + book.release_day.to_s + "日 /  ¥ " + book.price.to_s
+            %tr.book-registration
+              %td.book-cover
+                = image_tag(book.image, alt: "?", class: "book-image")
+              %td.desc
+                + 本棚に登録
+    = paginate(@books)
+  .right-content

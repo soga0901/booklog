@@ -1,6 +1,7 @@
 .container{
   margin: 0 auto;
   width: 980px;
+  min-height: 1000px;
 
   .left-content {
     width: 650px;
@@ -10,9 +11,6 @@
   .root-path {
     margin-top: 20px;
     .text-link {
-      color: #4EA6CC;
-    }
-    .text-link:visited {
       color: #4EA6CC;
     }
   }
@@ -135,3 +133,6 @@
     border-radius: 5px;
   }
 }
+.text-link:visited {
+  color: #4EA6CC;
+  }

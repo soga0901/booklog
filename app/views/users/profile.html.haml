@@ -3,7 +3,7 @@
     %p.root-path
       = link_to "ブクログ ", root_path, class: "text-link link-btn"
       >
-      = link_to @user.name + "さんの本棚", user_path(@user), class: "text-link link-btn"
+      = link_to @user.shelf.name, user_path(@user), class: "text-link link-btn"
       > プロフィール
     .user-wrapper
       .user-prof
@@ -12,7 +12,7 @@
       .user-shelf
         %h1
           プロフィール
-          - if current_user.id = @user.id
+          - if current_user.id == @user.id
             = link_to edit_user_registration_path do
               %i.fa.fa-gear
         %p
@@ -31,7 +31,7 @@
         %td.prof-item
           本棚の名前
         %td.prof-info
-          = link_to @user.name + "の本棚", user_path(@user), class: "text-link"
+          = link_to @user.shelf.name, user_path(@user), class: "text-link"
       %tr
         %td.prof-item
           本棚の紹介文
