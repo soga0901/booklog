@@ -12,13 +12,15 @@
           %li.navi-manu 新刊情報
           %li.navi-manu 談話室
           %li.navi-manu まとめ
-        %input.book--search--field.navi-manu{:name => "name", :placeholder => "作品・著者名で検索して本棚登録", :type => "text"}/
-        %a.fa.fa-search
-        .global-navi--right
-          - if user_signed_in?
-            = link_to current_user.name, profile_users_path(current_user), class: "home-btn link-btn"
-            = link_to "本棚", user_path(current_user), class: "home-btn link-btn"
-            = link_to "ログアウト", destroy_user_session_path, class: "logout-btn link-btn", method: :delete
-          - else
-            = link_to "新規登録", new_user_registration_path, class: "registration-btn link-btn"
-            = link_to "ログイン", new_user_session_path, class: "login-btn link-btn"
+        = form_for books_path, method: :get do |f|
+          = f.text_field :name, placeholder: "作品・著者名で検索して本棚登録", class: "book--search--field navi-manu"
+          = f.submit class: "book-search-btn", style: "display:none;"
+          %a.fa.fa-search
+          .global-navi--right
+            - if user_signed_in?
+              = link_to current_user.name, profile_users_path(current_user), class: "home-btn link-btn"
+              = link_to "本棚", user_path(current_user), class: "home-btn link-btn"
+              = link_to "ログアウト", destroy_user_session_path, class: "logout-btn link-btn", method: :delete
+            - else
+              = link_to "新規登録", new_user_registration_path, class: "registration-btn link-btn"
+              = link_to "ログイン", new_user_session_path, class: "login-btn link-btn"
