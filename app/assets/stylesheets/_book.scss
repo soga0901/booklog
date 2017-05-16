@@ -10,7 +10,8 @@
 #books-search {
   .book--search {
     width: 300px;
-    font-size: 20px;
+    font-size: 15px;
+    padding-left: 10px;
     border: solid 1px black;
     float: left;
     height: 40px;
@@ -63,7 +64,7 @@
   }
 }
 .edit-list {
-  margin-top: 25px;
+  margin: 25px 0 30px;
   width: 640px;
   box-sizing: border-box;
 }

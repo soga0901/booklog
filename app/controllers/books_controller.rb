@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
-  def index
+  def search_result
     binding.pry
-    @books = Book.all.page(params[:page]).per(10)
+    @search_word = params[:info]
+    @books = Book.where('title LIKE(?) OR author LIKE(?)', "%#{params[:info]}%", "#{params[:info]}%").page(params[:page]).per(10)
   end
 end
