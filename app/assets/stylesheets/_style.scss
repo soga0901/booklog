@@ -69,7 +69,8 @@
       float: right;
       color: #ffffff;
       margin-right: 45px;
-
+      height: 60px;
+      box-sizing: border-box;
       .registration-btn {
         background-color: #DA4740;
         padding: 8px 12px;
@@ -87,21 +88,35 @@
       .login-btn:hover {
         background-color: #38aef0;
       }
-
-      .home-btn {
-        margin-right: 15px;
-        background-color: #B4B4B4;
-        padding: 8px 12px;
+      .header-user-iamge {
+        float: left;
+        margin: 15px 15px 15px 0;
+        height: 30px;
       }
-      .home-btn:hover {
-        background-color: #D65F4C;
+      .fa-home {
+        float: left;
+        margin: 15px 15px 15px 0;
+        font-size: 30px;
+        color: #FFFFFF;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+      .fa-book {
+        float: left;
+        margin: 15px 15px 15px 0;
+        font-size: 30px;
+        color: #FFFFFF;
+        &:hover {
+          opacity: 0.7;
+        }
       }
       .logout-btn {
-        background-color: #24292E;
+        background-color: #000000;
         padding: 8px 12px;
-      }
-      .logout-btn:hover {
-        background-color: #38aef0;
+        &:hover {
+          background-color: #38aef0;
+        }
       }
     }
   }

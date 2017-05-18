@@ -31,7 +31,7 @@
           ※準備中
     .edit-list
       - @books.each do |book|
-        %table.tabletype-edit
+        %table.tabletype-edit{data: {id: book.id}}
           %tbody
             %tr.td-item
               %td.td-info
@@ -40,7 +40,7 @@
                     = book.title
                   .agregate
                     %span.btn-users
-                      260人が登録(仮)
+                      = book.shelves.length.to_s + "人が登録"
                     %span.btn-rating
                       ★4.21(仮)
                     %span.btn-reviews
@@ -51,10 +51,26 @@
             %tr.book-registration
               %td.book-cover
                 = image_tag(book.image, alt: "?", class: "book-image")
-              %td.desc
-                - if user_signed_in?
-                  + 本棚に登録
+              - if user_signed_in?
+                - if @user_books.include?(book)
+                  %td.after-add-book-area
+                    %ul.edit-tab
+                      %li.edit-tab-basic
+                        登録情報
+                      %li.edit-tab-review
+                        レビュ ｜
+                    #edit-area
+                      .edit-basic-wrapper
+                        #edit-status-area
                 - else
-                  レビューを
+                  %td.desc
+                    .add-book-area
+                      %span.add-book-btn
+                        + 本棚に登録
+                      / %span.after-add-book
+                      /   登録しました。
+              - else
+                %td.desc
+                  レビューを見る
     = paginate(@books)
   .right-content

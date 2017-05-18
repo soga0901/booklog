@@ -5,20 +5,8 @@
       >
       = link_to @user.shelf.name, user_path(@user), class: "text-link link-btn"
       > プロフィール
-    .user-wrapper
-      .user-prof
-        = link_to user_path(@user) do
-          = image_tag("prof_noimage.gif", class: "prof-img-m")
-      .user-shelf
-        %h1
-          プロフィール
-          - if current_user.id == @user.id
-            = link_to edit_user_registration_path do
-              %i.fa.fa-gear
-        %p
-          = @user.name + "さん"
-      .user-activity
-      .user-social
+    .user-wrapper-profile
+      = render partial: "info"
     %p.lead
       1993年9月1日生まれの男性(仮)
     %table.prof-table

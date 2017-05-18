@@ -1,0 +1,62 @@
+.user-prof
+  = link_to user_path(@user) do
+    - if @user.image
+      = image_tag(@user.image, class: "prof-img-m")
+    - else
+      = image_tag("prof_noimage.gif", class: "prof-img-m")
+  %ul.user-navi
+    %li.user-navi-shelf
+      %i.fa.fa-book
+    %li.user-navi-timeline
+      %i.fa.fa-clock-o
+    %li.user-navi-user
+      %i.fa.fa-user
+    %li
+      %i.fa.fa-info-circle
+.user-shelf
+  %h1
+    プロフィール
+    - if current_user.id == @user.id
+      = link_to edit_user_registration_path do
+        %i.fa.fa-gear
+  %p
+    = @user.name + "さん"
+  %ul.user-activity
+    %li
+      %dl
+        %dt
+          登録アイテム
+        %dd
+          = @user.shelf.books.length
+    %li.list-border-left
+      %dl
+        %dt
+          レビュー
+        %dd
+          0 (仮)
+    %li.list-border-left
+      %dl
+        %dt
+          レビュー率
+        %dd
+          0.0% (仮)
+    - if current_user.id == @user.id
+      %li.list-border-left
+        %dl
+          %dt
+            フレーズ
+          %dd
+            0 (仮)
+  .user-social
+    .user-follow-btn
+      - if current_user.id == @user.id
+        %span.follow-myself
+          あなたの本棚
+      - else
+        %span.follow-btn
+          ♥ フォロー
+    %ul.user-friends
+      %li.follow
+        0フォロー
+      %li.follower
+        0フォロワー※仮置き

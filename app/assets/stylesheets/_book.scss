@@ -140,6 +140,72 @@
         float: left;
         width: 450px;
         height: 210px;
+        position: relative;
+        .add-book-area {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          height: 60px;
+          width: 200px;
+          border: solid 5px #4E94B1;
+          color: #FFFFFF;
+          background-color: #5EAFD2;
+          text-align: center;
+          padding: 10px 0;
+          border-radius: 8px;
+          &:hover{
+            cursor: pointer;
+            opacity: 0.7;
+          }
+          .add-book-btn {
+            font-size: 20px;
+            font-weight: bold;
+          }
+          .after-add-book {
+            font-size: 20px;
+            display: none;
+          }
+        }
+      }
+      .after-add-book-area {
+        float: left;
+        width: 450px;
+        height: 210px;
+        .edit-tab {
+          cursor: pointer;
+          color: #999999;
+          font-weight: bold;
+          height: 210px;
+          width: 44px;
+          line-height: 18px;
+          background-color: gray;
+          border-right: solid 1px #000000;
+          float: left;
+          &-basic {
+            line-height: 18px;
+            margin: 0 auto;
+            padding: 14px 14px;
+            font-size: 16px;
+            height: 105px;
+            background-color: #000000;
+          }
+          &-review {
+            margin: 0 auto;
+            padding: 14px 14px;
+            font-size: 16px;
+            height: 105px;
+            background-color: #FFFFFF;
+          }
+        }
+        #edit-area {
+          margin-left: 44px;
+          width: 406px;
+          height: 210px;
+          background-color: red;
+        }
       }
   }
 .pagination {
@@ -178,3 +244,50 @@
   }
 }
 
+#users-header-profile-wrapper {
+  background-color: #A1A1A1;
+  #users-header-profile {
+    width: 1378px;
+    height: 250px;
+    background-color: #F0F0F0;
+    .root-path {
+      float: left;
+      padding: 10px 20px;
+    }
+    .user-wrapper {
+      height: 203px;
+      width: 1338px;
+      background-color: #FFFFFF;
+      float: left;
+      margin: 0 20px;
+      border-radius: 5px;
+    }
+  }
+}
+.shelf-header {
+  height: 47px;
+  width: 100%;
+  background-color: #CDCDCD;
+  &-menu {
+    margin: 0 20px;
+    height: 47px;
+  }
+}
+#shelf {
+  min-height: 700px;
+  width: 100%;
+  background-color: #AF8856;
+  overflow: auto;
+  .shelf-area {
+    margin: 60px 80px;
+    overflow: auto;
+    .book-area {
+      width: 140px;
+      height: 225px;
+      float: left;
+      .book-covar-image {
+        width: 110px;
+      }
+    }
+  }
+}
