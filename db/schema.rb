@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170514175102) do
+ActiveRecord::Schema.define(version: 20170518093538) do
 
   create_table "book_shelves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "book_id"
-    t.integer  "user_id"
+    t.integer  "shelf_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["book_id"], name: "index_book_shelves_on_book_id", using: :btree
-    t.index ["user_id"], name: "index_book_shelves_on_user_id", using: :btree
+    t.index ["shelf_id"], name: "index_book_shelves_on_shelf_id", using: :btree
   end
 
   create_table "books", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -32,6 +32,22 @@ ActiveRecord::Schema.define(version: 20170514175102) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "price"
+  end
+
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "text",       limit: 65535
+    t.integer  "rating"
+    t.integer  "book_id"
+    t.integer  "user_id"
+    t.integer  "shelf_id"
+    t.integer  "status_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "status"
+    t.index ["book_id"], name: "index_reviews_on_book_id", using: :btree
+    t.index ["shelf_id"], name: "index_reviews_on_shelf_id", using: :btree
+    t.index ["status_id"], name: "index_reviews_on_status_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
   end
 
   create_table "shelves", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -50,23 +66,28 @@ ActiveRecord::Schema.define(version: 20170514175102) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                                default: "", null: false
+    t.string   "encrypted_password",                   default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",                        default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "name",                                null: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.string   "name",                                              null: false
+    t.text     "image",                  limit: 65535
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "book_shelves", "books"
-  add_foreign_key "book_shelves", "users"
+  add_foreign_key "book_shelves", "shelves"
+  add_foreign_key "reviews", "books"
+  add_foreign_key "reviews", "shelves"
+  add_foreign_key "reviews", "statuses"
+  add_foreign_key "reviews", "users"
 end

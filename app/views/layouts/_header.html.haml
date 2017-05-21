@@ -14,12 +14,18 @@
           %li.navi-manu まとめ
         = form_tag(search_result_books_path, method: :get) do
           = text_field_tag :info, params[:info], placeholder: "作品・著者名で検索して本棚登録", class: "book--search--field navi-manu"
-          = submit_tag '', class: "book-search-btn", style: "display:none;"
-          %a.fa.fa-search
+          = submit_tag '', class: "book-search-btn", id: "book-search-btn-header", style: "display:none;"
+          %a.fa.fa-search#book-search--header
           .global-navi--right
             - if user_signed_in?
-              = link_to current_user.name, profile_users_path(current_user), class: "home-btn link-btn"
-              = link_to "本棚", user_path(current_user), class: "home-btn link-btn"
+              - if current_user.image.blank?
+                = image_tag("prof_noimage.gif", class: "header-user-iamge")
+              - else
+                = image_tag(current_user.image, class: "header-user-iamge")
+              = link_to profile_users_path(current_user) do
+                %i.fa.fa-home.lonk-btn
+              = link_to user_path(current_user) do
+                %i.fa.fa-book.link-btn
               = link_to "ログアウト", destroy_user_session_path, class: "logout-btn link-btn", method: :delete
             - else
               = link_to "新規登録", new_user_registration_path, class: "registration-btn link-btn"

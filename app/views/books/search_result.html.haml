@@ -8,8 +8,8 @@
     #books-search
       = form_tag(search_result_books_path, method: :get) do
         = text_field_tag :info, params[:info], class: "book--search", placeholder: "作品・著者名で検索して本棚登録"
-        = submit_tag '', class: "book-search-btn", style: "display:none;"
-      %a.fa.fa-search.book-search-btn
+        = submit_tag '', class: "book-search-btn", id: 'book-search-btn-body',style: "display:none;"
+      %a.fa.fa-search#book-search--body
     %p.serch-introduction
       まずは商品名、著者名、出版社名などを入力して検索してください。</br>
       例えば...梅沢富美男や 梅沢富美男や 梅沢富美男など。
@@ -31,30 +31,49 @@
           ※準備中
     .edit-list
       - @books.each do |book|
-        %table.tabletype-edit
-          %tbody
+        %table.tabletype-edit{data: {id: book.id, title: book.title}}
+          %tbody#book-information-area
             %tr.td-item
               %td.td-info
                 .book-prof
+                  .delete-btn-area
+                    - if user_signed_in?
+                      - if @user_books.include?(book)
+                        %span.book-delete-btn
+                          ✕
                   %h3.book-title
                     = book.title
                   .agregate
                     %span.btn-users
-                      260人が登録(仮)
+                      = book.shelves.length.to_s + "人が登録"
                     %span.btn-rating
                       ★4.21(仮)
                     %span.btn-reviews
                       10レビュー(仮)
                   .desc-mini
-                    %p.book-info.book-author
-                      = book.author + " /  本(仮) / " + book.release_year.to_s + "年" + book.release_month.to_s + "月" + book.release_day.to_s + "日 /  ¥ " + book.price.to_s
+                    %p.book-info
+                      = book.author + " /  本 / " + book.release_year.to_s + "年" + book.release_month.to_s + "月" + book.release_day.to_s + "日 /  ¥ " + book.price.to_s
             %tr.book-registration
               %td.book-cover
                 = image_tag(book.image, alt: "?", class: "book-image")
-              %td.desc
-                - if user_signed_in?
-                  + 本棚に登録
+              - if user_signed_in?
+                - if @user_books.include?(book)
+                  %td.after-add-book-area
+                    %ul.edit-tab
+                      %li.edit-tab-basic
+                        登録情報
+                      %li.edit-tab-review
+                        レビュ ｜
+                    #edit-area
+                      .edit-basic-wrapper
+                        #edit-status-area
                 - else
-                  レビューを
+                  %td.desc
+                    .add-book-area
+                      %span.add-book-btn
+                        + 本棚に登録
+              - else
+                %td.desc
+                  レビューを見る
     = paginate(@books)
   .right-content
