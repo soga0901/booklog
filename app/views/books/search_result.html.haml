@@ -31,11 +31,16 @@
           ※準備中
     .edit-list
       - @books.each do |book|
-        %table.tabletype-edit{data: {id: book.id}}
-          %tbody
+        %table.tabletype-edit{data: {id: book.id, title: book.title}}
+          %tbody#book-information-area
             %tr.td-item
               %td.td-info
                 .book-prof
+                  .delete-btn-area
+                    - if user_signed_in?
+                      - if @user_books.include?(book)
+                        %span.book-delete-btn
+                          ✕
                   %h3.book-title
                     = book.title
                   .agregate
@@ -46,8 +51,8 @@
                     %span.btn-reviews
                       10レビュー(仮)
                   .desc-mini
-                    %p.book-info.book-author
-                      = book.author + " /  本(仮) / " + book.release_year.to_s + "年" + book.release_month.to_s + "月" + book.release_day.to_s + "日 /  ¥ " + book.price.to_s
+                    %p.book-info
+                      = book.author + " /  本 / " + book.release_year.to_s + "年" + book.release_month.to_s + "月" + book.release_day.to_s + "日 /  ¥ " + book.price.to_s
             %tr.book-registration
               %td.book-cover
                 = image_tag(book.image, alt: "?", class: "book-image")
@@ -67,8 +72,6 @@
                     .add-book-area
                       %span.add-book-btn
                         + 本棚に登録
-                      / %span.after-add-book
-                      /   登録しました。
               - else
                 %td.desc
                   レビューを見る

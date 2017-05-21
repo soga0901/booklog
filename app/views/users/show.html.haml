@@ -1,15 +1,16 @@
-#users-header-profile-wrapper
-  #users-header-profile
-    #user-header-profile
-      %p.root-path
-        = link_to "ブクログ ", root_path, class: "text-link link-btn"
-        = " > " + @user.name + "さんの本棚"
-      .user-wrapper-shelf
-        = render partial: "info"
-  .shelf-header
-    .shelf-header-menu
-  #shelf.shelf-front-area
-    .shelf-area
-      - @books.each do |book|
-        .book-area
-          = image_tag(book.image, alt: "?", class: "book-covar-image")
+.container-02
+  #users-header-profile-wrapper
+    #users-header-profile
+      #user-header-profile
+        %p.root-path
+          = link_to "ブクログ ", root_path, class: "text-link link-btn"
+          = " > " + @user.name + "さんの本棚"
+        .user-wrapper-shelf
+          = render partial: "info"
+    .shelf-header
+      .shelf-header-menu
+    #shelf.shelf-front-area
+      .shelf-area
+        - @books.each do |book|
+          .book-area
+            = image_tag(book.image, alt: "?", class: "book-covar-image")

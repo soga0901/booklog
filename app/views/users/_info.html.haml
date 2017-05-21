@@ -1,9 +1,9 @@
 .user-prof
   = link_to user_path(@user) do
-    - if @user.image
-      = image_tag(@user.image, class: "prof-img-m")
-    - else
+    - if @user.image.blank?
       = image_tag("prof_noimage.gif", class: "prof-img-m")
+    - else
+      = image_tag(@user.image, class: "prof-img-m")
   %ul.user-navi
     %li.user-navi-shelf
       %i.fa.fa-book

@@ -82,37 +82,46 @@
         float: left;
         padding: 10px 0 10px 15px;
         box-sizing: border-box;
-          .book-prof {
-            .book-title {
-              font-weight: bold;
-            }
-            .agregate {
-              box-sizing: border-box;
-              margin: 10px 0;
-              font-weight: bold;
-              .btn-users {
-                margin-right: 5px;
-                color: #DB4740;
-              }
-              .btn-rating {
-                margin-right: 5px;
-                color: #F58C29;
-              }
-              .btn-reviews {
-                color: #4ea6cc;
-              }
-            }
-            .desc-mini {
-              .book-info {
-                width: 640px;
-                float: left;
-                box-sizing: border-box;
-              }
+        .book-prof {
+          .book-delete-btn {
+            float: right;
+            margin-right: 10px;
+            color: red;
+            font-weight: bold;
+            &:hover {
+              cursor: pointer;
+              opacity: 0.7;
             }
           }
+          .book-title {
+            font-weight: bold;
+          }
+          .agregate {
+            box-sizing: border-box;
+            margin: 10px 0;
+            font-weight: bold;
+            .btn-users {
+              margin-right: 5px;
+              color: #DB4740;
+            }
+            .btn-rating {
+              margin-right: 5px;
+              color: #F58C29;
+            }
+            .btn-reviews {
+              color: #4ea6cc;
+            }
+          }
+          .desc-mini {
+            .book-info {
+              width: 640px;
+              float: left;
+              box-sizing: border-box;
+            }
+          }
+        }
       }
     }
-
     .book-registration {
       background-color: #ffffff;
       height: 210px;
@@ -164,9 +173,24 @@
             font-size: 20px;
             font-weight: bold;
           }
+        }
+        .after-area {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          height: 60px;
+          width: 200px;
+          padding: 10px 0;
+          border: solid 5px #eaed5c;
+          border-radius: 8px;
+          text-align: center;
+          background-color: #eaed5c;
           .after-add-book {
+            color: #FFFFFF;
             font-size: 20px;
-            display: none;
           }
         }
       }

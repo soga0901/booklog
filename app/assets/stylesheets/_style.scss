@@ -10,6 +10,9 @@
   .global-navi {
     height: 60px;
     background-color: #8BAFBF;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 
     &-inner {
       width: 100%;
@@ -158,4 +161,27 @@
     float: right;
     margin-bottom: 10px;
   }
+}
+
+.flash-message-area {
+  float: right;
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  &-text {
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #3E90C0;
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 10px 30px;
+  }
+}
+
+.container {
+  padding-top: 60px;
+}
+
+.container-02 {
+  padding-top: 60px;
 }

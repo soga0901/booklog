@@ -12,5 +12,5 @@ Rails.application.routes.draw do
       get 'search_result'
     end
   end
-  resources :book_shelves, only: [:create]
+  resources :book_shelves, only: [:create, :destroy]
 end
