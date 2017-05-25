@@ -1,0 +1,149 @@
+.book-info-show-area {
+  margin-top: 10px;
+  background-color: #FFFFFF;
+  border-top: solid 8px #EDE9C5;
+  overflow: auto;
+  padding-bottom: 30px;
+  .book-title {
+    font-size: 34px;
+    line-height: 38px;
+    margin: 8px 12px;
+  }
+  .book-show-area {
+    margin-top: 8px;
+    .book-image-area {
+      float: left;
+      margin: 0 12px;
+      .book-show-image {
+        width: 220px;
+      }
+    }
+    .review-add-shelf {
+      margin: 20px auto 0;
+      width: 150px;
+      height: 40px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      .add-shelf-btn {
+        background-color: #5eafd2;
+        color: #FFFFFF;
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: solid 5px #4E94B1;
+        &:hover {
+          cursor: pointer;
+          opacity: 0.5;
+        }
+      }
+      .write-review-btn {
+        color: #FFFFFF;
+        background-color: #EE746E;
+        padding: 8px 8px;
+        border-radius: 5px;
+        border: solid 5px #C5605B;
+        &:hover {
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+  .book-info-area {
+    float: left;
+    margin: 10px 0  0 20px;
+    .book-info-aggregate {
+      li {
+        float: left;
+        margin-right: 10px;
+      }
+      .fa {
+        font-size: 20px;
+      }
+      .fa-user {
+        color: #DA4740;
+      }
+      .fa-star {
+        color: #F5B629;
+      }
+      .fa-comment {
+        color: #4EA6CC;
+      }
+      .bold {
+        font-size: 15px;
+        font-weight: bold;
+      }
+    }
+    .book-info-author {
+      margin-top: 40px;
+    }
+    .book-info-description {
+      margin-top: 10px;
+    }
+  }
+}
+#review-line {
+  margin-top: 40px;
+  .under-line {
+    padding: 0 0 8px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: solid 5px #000000;
+  }
+  .review-sort {
+    margin: 10px 0;
+    text-align: center;
+    ul {
+      margin-left: 40px;
+      overflow: auto;
+      li {
+      float: left;
+      margin-right: 10px;
+      color: #d7d7d7;
+      }
+      .all-reviews {
+      color: #000000;
+      font-weight: bold;
+      }
+    }
+  }
+  .reviews {
+    .review {
+      margin-top: 20px;
+      overflow: auto;
+      .user-icon-area {
+        float: left;
+        .review-user-img {
+          height: 36px;
+          width: 36px;
+          &:hover {
+            border: 1px solid #38aef0;
+          }
+        }
+      }
+      .summary {
+        width: 600px;
+        float: left;
+        margin-left: 10px;
+        border-radius: 5px;
+        border: 1px silver solid;
+        .user-info-area {
+          padding: 9px 0;
+          background-color: #F0F0F0;
+          color: #999999;
+          font-size: 12px;
+          padding-left: 10px;
+          .users-page-link {
+            color: #999999;
+            text-decoration: underline;
+          }
+        }
+        .review-text {
+          font-size: 14px;
+          padding: 15px;
+          background-color: #FFFFFF;
+          min-height: 80px;
+        }
+      }
+    }
+  }
+}

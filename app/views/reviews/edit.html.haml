@@ -1,0 +1,47 @@
+.container
+  %p.root-path
+    = link_to "ブクログ ", root_path, class: "text-link"
+    = " > "
+    = link_to @review.book.title, book_path(@book), class: "text-link"
+    = " > " + current_user.name + "さんのレビュー > 登録情報の編集・削除"
+  .left-content
+    %h1#edit
+      登録情報の編集・削除
+    .edit-book-area
+      .book-image-area
+        = image_tag(@book.image, class: "review-edit-book-img")
+      .book-info-area
+        %h2.book-title
+          = link_to book_path(@book), class: "book-title-link"  do
+            = @book.title
+        .book-author
+          = @book.author
+    .tab-menu
+      %ul.edit-tabs
+        %li.edit-tab-review.active
+          レビュー
+        / %li.edit-tab.edit-tab-phrase
+        /   フレーズ
+        / %li.edit-tab.edit-tab-reread
+        /   再読記録
+        %li.edit-tab.edit-tab-delete
+          削除
+    #edit_panels.edit-area
+      #tab1
+        = form_for @review do |f|
+          %table
+            %tr
+              %th
+                レビュー・感想
+              %td
+                .edit-review-area
+                  = f.text_area :text, class: "edit-review", placeholder: "レビューや感想を書く", size: "20×10"
+          %p.submit
+            = f.submit "登録情報を更新する",　class: "review-edit-send-btn", id: "review-send-btn"
+      #tab4
+        %p#tab4-lead
+          このアイテムを本棚から削除します。あなたのレビューや再読記録も削除されますが、フレーズは別途削除が必要です。
+          .delete-from-shelf
+            = link_to book_shelf_path(@book_shelf), class: "delete-from-shelf-btn", method: :delete do
+              本棚から削除する
+  .right-content

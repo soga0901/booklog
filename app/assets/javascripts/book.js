@@ -1,20 +1,21 @@
 $(function(e) {
 
   // #本棚に追加した後のhtml
-  function afterAdd(addParent) {
-    addParent.append('\
-      <td class="after-add-book-area">\
-        <ul class="edit-tab">\
-          <li class="edit-tab-basic">登録情報</li>\
-          <li class="edit-tab-review">レビュ ｜</li>\
-        </ul>\
-        <div id="edit-area">\
-          <div class="edit-basic-wrapper">\
-            <div id="edit-status-area">\
-            </div>\
-          </div>\
-        </div>\
-      </td>');
+  function afterAdd(addParent, review) {
+    addParent.append(`
+      <td class="after-add-book-area">
+        <ul class="edit-tab">
+          <li class="edit-tab-basic">登録情報</li>
+          <li class="edit-tab-review">レビュー</li>
+        </ul>
+        <div class="edit-review-wapper">
+          <form id="js-review-form" class="edit-review-form" action=/reviews/${review.id} accept-charset="UTF-8" method="post">
+          <textarea class="edit-review-textarea" placeholder="レビューや感想を書く" rows="10" cols="50" name="review[text]"></textarea>
+          <div class="edit-review-btn-area" data-id=${review.id}>
+            <span class="edit-review-btn" id="js-review-btn">投稿</span>
+          </div>
+        </div>
+      </td>`);
     var addSiblings = addParent.siblings('.td-item');
     addSiblings.find('.delete-btn-area').append('<span class="book-delete-btn">✕</span>');
   }
@@ -33,17 +34,7 @@ $(function(e) {
   $(".book-registration").on("click", ".add-book-area",function() {
     var bookId = $(this).parents('table').data('id');
     var addParent = $(this).parents('.book-registration')
-    var desc =$(this).parents('.desc')
-    desc.append('\
-      <div class="after-area">\
-        <span class="after-add-book">登録しました</span>\
-      </div>');;
-     $(this).remove();
-     setTimeout(function(){
-      desc.remove();
-      afterAdd(addParent);
-    },1000);
-
+    var desc = $(this).parents('.desc')
     $.ajax({
       type: 'POST',
       url: '/book_shelves',
@@ -52,7 +43,28 @@ $(function(e) {
         book_id: bookId
       }
     })
-    .done(function() {
+    .done(function(data) {
+      $.ajax({
+        type: 'POST',
+        url: '/reviews',
+        dataType: 'json',
+        data: {
+          book_id: bookId
+        }
+      })
+      .done(function(data) {
+        desc.append('\
+        <div class="after-area">\
+          <span class="after-add-book">登録しました</span>\
+        </div>');
+        $(this).remove();
+        setTimeout(function(){
+          desc.remove();
+          afterAdd(addParent, data.review);
+        },1000);
+      })
+      .fail(function() {
+      });
     })
     .fail(function() {
       window.alert("本棚へ追加できませんでした。");
@@ -86,6 +98,14 @@ $(function(e) {
         setTimeout(function(){
           $('.flash-message-area-text').remove();
         },3000);
+        $.ajax({
+          type: 'DELETE',
+          url: '/reviews/:id',
+          dataType: 'json',
+          data: {
+            book_id: bookId
+          }
+        })
       })
       .fail(function() {
         window.alert("更新に失敗");
@@ -96,23 +116,46 @@ $(function(e) {
     }
   });
 
-  // 本棚追加後のタブ切り替え
-  $(".edit-tab-review").on("click", function() {
-    $(this).css('background-color', '#000000');
-    $(this).siblings('.edit-tab-basic').css('background-color', '#FFFFFF')
-  });
+  // レビュー投稿
+  $('.book-registration').on("click", ".edit-review-btn-area", function(e) {
+    var textField = $(this).siblings(".edit-review-textarea");
+    var reviewText = textField.val();
+    var reviewId = $(this).data('id');
+    var reviewUrl = '/reviews/' + reviewId
 
-  $(".edit-tab-basic").on("click", function() {
-    $(this).css('background-color', '#000000');
-    $(this).siblings('.edit-tab-review').css('background-color', '#FFFFFF')
+    $.ajax({
+      type: 'PATCH',
+      url: reviewUrl,
+      dataType: 'json',
+      data: {
+        review: {
+          text: reviewText
+        }
+      }
+    })
+    .done(function() {
+      var addReviewMessage = ('\
+                <div class="flash-message-area-text">\
+                  レビューを編集しました。\
+                <div>');
+      $('.flash-message-area').append(addReviewMessage);
+      setTimeout(function(){
+        $('.flash-message-area-text').remove();
+      },3000);
+    })
+    .fail(function() {
+      window.alert("更新できませんでした");
+    });
   });
 
   $("#book-search--header").on("click", function() {
     $("#book-search-btn-header").click();
+    $("#book-search-btn-header").prop('disabled', false);
   });
 
   $("#book-search--body").on("click", function() {
     $("#book-search-btn-body").click();
+    $("#book-search-btn-body").prop('disabled', false);
   });
 
 });
