@@ -115,12 +115,17 @@
         .review-user-img {
           height: 36px;
           width: 36px;
+          &:hover {
+            border: 1px solid #38aef0;
+          }
         }
       }
       .summary {
         width: 600px;
         float: left;
         margin-left: 10px;
+        border-radius: 5px;
+        border: 1px silver solid;
         .user-info-area {
           padding: 9px 0;
           background-color: #F0F0F0;
@@ -131,6 +136,12 @@
             color: #999999;
             text-decoration: underline;
           }
+        }
+        .review-text {
+          font-size: 14px;
+          padding: 15px;
+          background-color: #FFFFFF;
+          min-height: 80px;
         }
       }
     }

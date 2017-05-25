@@ -68,15 +68,17 @@
             %li.review
               .user-icon-area
                 - if review.user.image.blank?
-                  = image_tag("prof_noimage.gif", class: "review-user-img")
+                  = link_to user_path(review.user) do
+                    = image_tag("prof_noimage.gif", class: "review-user-img")
                 - else
-                  = image_tag(review.user.image, class: "review-user-img")
+                  = link_to user_path(review.user) do
+                    = image_tag(review.user.image, class: "review-user-img")
               .summary
                 .user-info-area
                   = link_to user_path(review.user), class: "users-page-link" do
                     = review.user.name + "さん"
                   のレビュー
                 .rating-area
-                %p.review-text
+                .review-text
                   = simple_format(review.text)
   .right-content

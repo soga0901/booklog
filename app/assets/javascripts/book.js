@@ -148,17 +148,6 @@ $(function(e) {
     });
   });
 
-  // 本棚追加後のタブ切り替え
-  $(".edit-tab-review").on("click", function() {
-    $(this).css('background-color', '#000000');
-    $(this).siblings('.edit-tab-basic').css('background-color', '#FFFFFF')
-  });
-
-  $(".edit-tab-basic").on("click", function() {
-    $(this).css('background-color', '#000000');
-    $(this).siblings('.edit-tab-review').css('background-color', '#FFFFFF')
-  });
-
   $("#book-search--header").on("click", function() {
     $("#book-search-btn-header").click();
     $("#book-search-btn-header").prop('disabled', false);

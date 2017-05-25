@@ -33,7 +33,7 @@
         %dt
           レビュー
         %dd
-          0 (仮)
+          = @user.reviews.where.not(text: blank?).count
     %li.list-border-left
       %dl
         %dt

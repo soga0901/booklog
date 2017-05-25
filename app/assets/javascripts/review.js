@@ -2,7 +2,7 @@ $(function() {
   $('.edit-tab-delete').on('click', function() {
     $(this).addClass('active');
     $(this).removeClass('edit-tab');
-    var changeTab = $(this).siblings('.current-tab');
+    var changeTab = $(this).siblings('.active');
     changeTab.addClass('edit-tab');
     changeTab.removeClass('active')
     $('#tab1').hide();
@@ -10,8 +10,8 @@ $(function() {
   });
 
   $('.edit-tab-review').on('click', function() {
-    // $(this).addClass('active');
-    $(this).removeClass('active');
+    $(this).addClass('active');
+    $(this).removeClass('edit-tab');
     var changeTab = $(this).siblings('.active');
     changeTab.addClass('edit-tab');
     changeTab.removeClass('active')
