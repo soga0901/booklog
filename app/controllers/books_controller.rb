@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
-    @reviews = @book.reviews.order('created_at DESC')
+    @reviews = @book.reviews.order("created_at DESC")
     if user_signed_in?
       @shelf = current_user.shelf
       if @book.reviews.find_by(user_id: current_user.id)
@@ -11,7 +11,6 @@ class BooksController < ApplicationController
   end
 
   def search_result
-    @review = Review.new
     if user_signed_in?
       @shelf = current_user.shelf
       @user_books = @shelf.books

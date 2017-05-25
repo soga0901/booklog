@@ -71,9 +71,10 @@
                     /       ※準備中
                     .edit-review-wapper
                       = form_for Review.find_by(book_id: book.id, user_id: current_user.id), html: {id: "js-review-form", class: "edit-review-form"} do |f|
-                        = f.text_area :text, class: "edit-review-textarea", placeholder: "レビューや感想を書く", rows: "10", cols: "50"
-                        .edit-review-btn-area
-                          = f.submit "投稿", class: "edit-review-btn", id: "js-review-btn"
+                        = f.text_area :text, class: "edit-review-textarea", placeholder: "レビューや感想を書く", rows: "10", cols: "30"
+                        .edit-review-btn-area{data: {id: Review.find_by(book_id: book.id, user_id: current_user.id).id}}
+                          %span.edit-review-btn#js-review-btn
+                            投稿
                 - else
                   %td.desc
                     .add-book-area

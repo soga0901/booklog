@@ -23,7 +23,12 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     @review.update(review_params)
-    redirect_to book_path(@review.book)
+    if @review.save
+      respond_to do |format|
+        format.html { redirect_to book_path(@review.book) }
+        format.json
+      end
+    end
   end
 
   def review_params
