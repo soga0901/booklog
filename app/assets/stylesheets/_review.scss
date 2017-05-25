@@ -1,0 +1,132 @@
+#edit {
+  font-size: 34px;
+  margin: 10px 0;
+}
+.edit-book-area {
+  border-top: 5px #333 solid;
+  padding: 20px;
+  overflow: auto;
+  min-height: 150px;
+  background-color: #F0F0F0;
+  .book-image-area {
+    float: left;
+    .review-edit-book-img {
+      width: 50px;
+    }
+  }
+  .book-info-area {
+    float: left;
+    margin-left: 20px;
+    .book-title-link {
+      color: #000000;
+      text-decoration: underline;
+      font-weight: bold;
+      &:visited {
+        color: #000000;
+      }
+    }
+    .book-author {
+      margin: 10px 0;
+    }
+  }
+}
+.tab-menu {
+  border-bottom: 5px #1e1e1e solid;
+  overflow: auto;
+  margin-top: 20px;
+  .edit-tabs {
+    li {
+      float: left;
+      margin-right: 11px;
+      height: 35px;
+      line-height: 36px;
+      text-align: center;
+      padding: 0 20px;
+      border-top: solid 1px #CDCDCD;
+      border-right: solid 1px #CDCDCD;
+      border-left: solid 1px #CDCDCD;
+      min-width: 70px;
+    }
+    .edit-tab {
+      background-color: #ffffff;
+      &:hover {
+        cursor: pointer;
+        background-color: #38aef0;
+        color: #ffffff;
+      }
+    }
+    .active {
+      background-color: #333333;
+      color: #FFFFFF;
+    }
+  }
+}
+#edit_panels.edit-area {
+  #tab1 {
+    table {
+      tr {
+        border-bottom: 1px #cdcdcd solid;
+        th {
+          padding: 25px;
+          width: 150px;
+          background-color: #e8f6f5;
+          text-align: left;
+          color: #656565;
+          font-size: 13px;
+          font-weight: bold;
+        }
+        td {
+          background-color: #FFFFFF;
+        }
+        .edit-review-area {
+          min-height: 200px;
+          max-height: 400px;
+          .edit-review {
+          padding: 8px;
+          font-size: 14px;
+          line-height: 16px;
+          border: 1px #1e1e1e solid;
+          width: 450px;
+          height: 150px;
+          border-radius: 3px;
+          margin: 20px 25px;
+          vertical-align: top;
+          }
+        }
+      }
+    }
+    .submit {
+      text-align: center;
+      margin: 40px auto;
+      #review-send-btn {
+        padding: 10px 20px;
+        border: none;
+        display: inline-block;
+        border-radius: 5px;
+        background-color: #4ea6cc;
+        color: #FFFFFF;
+        &:hover {
+          background-color: #000000;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  #tab4 {
+    margin-top: 20px;
+    display: none;
+    .delete-from-shelf {
+      text-align: center;
+      margin-top: 20px;
+      &-btn {
+        color: #ffffff;
+        padding: 15px 20px;
+        background-color: #da4740;
+        border-radius: 5px;
+        &:hover {
+          background-color: #000000;
+        }
+      }
+    }
+  }
+}

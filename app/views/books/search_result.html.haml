@@ -42,14 +42,15 @@
                         %span.book-delete-btn
                           ✕
                   %h3.book-title
-                    = book.title
+                    = link_to book_path(book), class: "book-title-link" do
+                      = book.title
                   .agregate
                     %span.btn-users
                       = book.shelves.length.to_s + "人が登録"
-                    %span.btn-rating
-                      ★4.21(仮)
+                    / %span.btn-rating
+                    /   ★3.20(仮)
                     %span.btn-reviews
-                      10レビュー(仮)
+                      = book.reviews.where.not(text: blank?).count.to_s + "レビュー"
                   .desc-mini
                     %p.book-info
                       = book.author + " /  本 / " + book.release_year.to_s + "年" + book.release_month.to_s + "月" + book.release_day.to_s + "日 /  ¥ " + book.price.to_s
@@ -63,10 +64,16 @@
                       %li.edit-tab-basic
                         登録情報
                       %li.edit-tab-review
-                        レビュ ｜
-                    #edit-area
-                      .edit-basic-wrapper
-                        #edit-status-area
+                        レビュー
+                    / #edit-area
+                    /   .edit-basic-wrapper
+                    /     #edit-status-area
+                    /       ※準備中
+                    .edit-review-wapper
+                      = form_for Review.find_by(book_id: book.id, user_id: current_user.id), html: {id: "js-review-form", class: "edit-review-form"} do |f|
+                        = f.text_area :text, class: "edit-review-textarea", placeholder: "レビューや感想を書く", rows: "10", cols: "50"
+                        .edit-review-btn-area
+                          = f.submit "投稿", class: "edit-review-btn", id: "js-review-btn"
                 - else
                   %td.desc
                     .add-book-area

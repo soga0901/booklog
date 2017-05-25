@@ -6,7 +6,7 @@ $(function(e) {
       <td class="after-add-book-area">\
         <ul class="edit-tab">\
           <li class="edit-tab-basic">登録情報</li>\
-          <li class="edit-tab-review">レビュ ｜</li>\
+          <li class="edit-tab-review">レビュー</li>\
         </ul>\
         <div id="edit-area">\
           <div class="edit-basic-wrapper">\
@@ -53,6 +53,14 @@ $(function(e) {
       }
     })
     .done(function() {
+      $.ajax({
+      type: 'POST',
+      url: '/reviews',
+      dataType: 'json',
+      data: {
+        book_id: bookId
+        }
+      })
     })
     .fail(function() {
       window.alert("本棚へ追加できませんでした。");
@@ -86,6 +94,14 @@ $(function(e) {
         setTimeout(function(){
           $('.flash-message-area-text').remove();
         },3000);
+        $.ajax({
+          type: 'DELETE',
+        url: '/reviews/:id',
+        dataType: 'json',
+        data: {
+          book_id: bookId
+          }
+        })
       })
       .fail(function() {
         window.alert("更新に失敗");
@@ -94,6 +110,11 @@ $(function(e) {
     else {
       console.log("中止");
     }
+  });
+
+  // レビュー投稿
+  $('#js-review-btn').on("click", function(e) {
+    e.preventDefault();
   });
 
   // 本棚追加後のタブ切り替え
@@ -109,10 +130,12 @@ $(function(e) {
 
   $("#book-search--header").on("click", function() {
     $("#book-search-btn-header").click();
+    $("#book-search-btn-header").prop('disabled', false);
   });
 
   $("#book-search--body").on("click", function() {
     $("#book-search-btn-body").click();
+    $("#book-search-btn-body").prop('disabled', false);
   });
 
 });

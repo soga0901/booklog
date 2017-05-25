@@ -95,6 +95,10 @@
           }
           .book-title {
             font-weight: bold;
+            &-link {
+              color: #000000;
+              text-decoration: underline;
+            }
           }
           .agregate {
             box-sizing: border-box;
@@ -203,32 +207,59 @@
           color: #999999;
           font-weight: bold;
           height: 210px;
-          width: 44px;
           line-height: 18px;
-          background-color: gray;
           border-right: solid 1px #000000;
           float: left;
           &-basic {
             line-height: 18px;
             margin: 0 auto;
-            padding: 14px 14px;
+            padding: 20px 14px;
+            font-size: 16px;
+            height: 105px;
+            background-color: #FFFFFF;
+            writing-mode: tb-rl;
+          }
+          &-review {
+            margin: 0 auto;
+            writing-mode: tb-rl;
+            padding: 20px 14px;
             font-size: 16px;
             height: 105px;
             background-color: #000000;
           }
-          &-review {
-            margin: 0 auto;
-            padding: 14px 14px;
-            font-size: 16px;
-            height: 105px;
-            background-color: #FFFFFF;
-          }
         }
-        #edit-area {
-          margin-left: 44px;
-          width: 406px;
-          height: 210px;
-          background-color: red;
+        .edit-review-wapper {
+          .edit-review-form {
+            width: 20px;
+            height: 10px;
+            float: left;
+            .edit-review-textarea {
+              width: 350px;
+              height: 100px;
+              margin: 15px 25px;
+              border-radius: 3px;
+              padding: 8px;
+              line-height: 16px;
+              border: 1px #1e1e1e solid;
+            }
+            .edit-review-btn-area {
+              .edit-review-btn {
+                margin: 0 175px;
+                padding: 10px 20px;
+                border: none;
+                display: inline-block;
+                color: #ffffff;
+                font-size: 12px;
+                line-height: 1.6em;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: #4ea6cc;
+                &:hover {
+                  background-color: #000000;
+                }
+              }
+            }
+          }
         }
       }
   }

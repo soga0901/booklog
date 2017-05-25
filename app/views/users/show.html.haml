@@ -13,4 +13,5 @@
       .shelf-area
         - @books.each do |book|
           .book-area
-            = image_tag(book.image, alt: "?", class: "book-covar-image")
+            = link_to book_path(book) do
+              = image_tag(book.image, alt: "?", class: "book-covar-image")
