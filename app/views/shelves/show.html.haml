@@ -1,0 +1,20 @@
+.container
+  .left-content
+    %p.root-path
+      = link_to "ブクログ ", root_path, class: "text-link link-btn"
+      >
+      = link_to @user.name + "さんの本棚", user_path(@user),class: "text-link link-btn"
+      >
+      = @user.name + "さんの本棚へのコメント"
+    .user-wrapper-profile
+      = render partial: "users/info"
+    .shlef-comments-area
+      - if @comments.length == 0
+        本棚へのコメントはまだありません。
+      - else
+        - @comments.each do |comment|
+          = comment.text
+    .comment-create-area
+      = form_for [@user, @shelf, @comment] do |f|
+        = f.text_field :text, placeholder: "コメントを入力してください"
+        = f.submit "コメントする"
