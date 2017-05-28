@@ -1,6 +1,6 @@
 $(function() {
   function buildNewBtn(review) {
-    var newBtn = (`<a href="/reviews/${ review.id }/edit"><span class="write-review-btn">レビューを書く</span></a>`);
+    var newBtn = ('<a href="/reviews/' + review.id +'/edit"><span class="write-review-btn">レビューを書く</span></a>');
     return newBtn;
   }
   $(".add-shelf-btn").on('click', function() {
