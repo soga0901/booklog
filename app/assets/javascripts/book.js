@@ -2,20 +2,19 @@ $(function(e) {
 
   // #本棚に追加した後のhtml
   function afterAdd(addParent, review) {
-    addParent.append(`
-      <td class="after-add-book-area">
-        <ul class="edit-tab">
-          <li class="edit-tab-basic">登録情報</li>
-          <li class="edit-tab-review">レビュー</li>
-        </ul>
-        <div class="edit-review-wapper">
-          <form id="js-review-form" class="edit-review-form" action=/reviews/${review.id} accept-charset="UTF-8" method="post">
-          <textarea class="edit-review-textarea" placeholder="レビューや感想を書く" rows="10" cols="50" name="review[text]"></textarea>
-          <div class="edit-review-btn-area" data-id=${review.id}>
-            <span class="edit-review-btn" id="js-review-btn">投稿</span>
-          </div>
-        </div>
-      </td>`);
+    addParent.append('<td class="after-add-book-area">\
+                      <ul class="edit-tab">\
+                        <li class="edit-tab-basic">登録情報</li>\
+                        <li class="edit-tab-review">レビュー</li>\
+                      </ul>\
+                    <div class="edit-review-wapper">\
+                      <form id="js-review-form" class="edit-review-form" action=/reviews/${review.id} accept-charset="UTF-8" method="post">\
+                        <textarea class="edit-review-textarea" placeholder="レビューや感想を書く" rows="10" cols="50" name="review[text]"></textarea>\
+                        <div class="edit-review-btn-area" data-id='+ review.id +'>\
+                          <span class="edit-review-btn" id="js-review-btn">投稿</span>\
+                      </div>\
+                      </div>\
+                      </td>');
     var addSiblings = addParent.siblings('.td-item');
     addSiblings.find('.delete-btn-area').append('<span class="book-delete-btn">✕</span>');
   }
