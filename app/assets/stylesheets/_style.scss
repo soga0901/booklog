@@ -97,6 +97,15 @@
         margin: 15px 15px 15px 0;
         height: 30px;
       }
+      .fa-file-o {
+        float: left;
+        margin: 15px 15px 15px 0;
+        font-size: 30px;
+        color: #FFFFFF;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
       .fa-home {
         float: left;
         margin: 15px 15px 15px 0;

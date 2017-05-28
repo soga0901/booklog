@@ -8,13 +8,6 @@
       = @user.name + "さんの本棚へのコメント"
     .user-wrapper-profile
       = render partial: "users/info"
-    .comment-create-area
-      %span.comment-create-area--lead
-        本棚へコメント
-        = form_for [@user, @shelf, @comment] do |f|
-          = f.text_area :text, class: "comment-area",placeholder: "コメントを入力してください"
-          .submit-area
-            = f.submit "コメントする", class: "comment-btn"
     .shlef-comments-area.clearfix
       %ul.comments
         - if @comments.length == 0
@@ -40,4 +33,11 @@
                 .comment-text
                   = simple_format(comment.text)
     = paginate(@comments)
+    .comment-create-area
+      %span.comment-create-area--lead
+        本棚へコメント
+        = form_for [@user, @shelf, @comment] do |f|
+          = f.text_area :text, class: "comment-area",placeholder: "コメントを入力してください"
+          .submit-area
+            = f.submit "コメントする", class: "comment-btn"
   .right-content

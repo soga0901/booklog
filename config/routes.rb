@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :books, only: [:show] do
+  resources :books, only: [:show, :new, :create] do
     collection do
       get 'search_result'
     end
