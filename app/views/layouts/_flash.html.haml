@@ -1,1 +1,5 @@
 .flash-message-area
+  - flash.each do |key, value|
+    - if key == "success"
+      .flash-message-success
+        = value

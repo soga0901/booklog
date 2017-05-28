@@ -3,5 +3,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_one :shelf
   has_many :reviews
-  accepts_nested_attributes_for :shelf
+  has_many :comments
 end

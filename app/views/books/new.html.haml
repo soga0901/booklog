@@ -1,0 +1,30 @@
+.container
+  .left-content
+    %p.root-path
+      本の登録画面
+      = form_for @book, class: "book-registration-form" do |f|
+        .category
+          = f.label :title
+          = f.text_field :title, autofocus: true
+        .category
+          = f.label :author
+          = f.text_field :author
+        .category
+          = f.label :publisher
+          = f.text_field :publisher
+        .category
+          = f.label :image
+          = f.text_field :image
+        .category
+          = f.label :release_year
+          = f.text_field :release_year
+        .category
+          = f.label :release_month
+          = f.text_field :release_month
+        .category
+          = f.label :release_day
+          = f.text_field :release_day
+        .category
+          = f.label :price
+          = f.text_field :price
+        = f.submit "登録"

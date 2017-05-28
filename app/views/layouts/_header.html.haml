@@ -2,7 +2,7 @@
   .global-navi.global-navi-login.clearFix
     .global-navi-inner
       .global-navi--left
-        = link_to root_path do
+        = link_to root_path, data: {"turbolinks" => false} do
           - if user_signed_in?
             = image_tag("booklog_top.png", alt: "アイコン", class: "navi-menu top-icon")
           - else
@@ -22,11 +22,13 @@
                 = image_tag("prof_noimage.gif", class: "header-user-iamge")
               - else
                 = image_tag(current_user.image, class: "header-user-iamge")
-              = link_to profile_users_path(current_user) do
-                %i.fa.fa-home.lonk-btn
-              = link_to user_path(current_user) do
+              = link_to new_book_path, data: {"turbolinks" => false} do
+                %i.fa.fa-file-o.link-btn
+              = link_to profile_users_path(current_user), data: {"turbolinks" => false} do
+                %i.fa.fa-home.link-btn
+              = link_to user_path(current_user), data: {"turbolinks" => false} do
                 %i.fa.fa-book.link-btn
-              = link_to "ログアウト", destroy_user_session_path, class: "logout-btn link-btn", method: :delete
+              = link_to "ログアウト", destroy_user_session_path, class: "logout-btn link-btn", data: {"turbolinks" => false}, method: :delete
             - else
-              = link_to "新規登録", new_user_registration_path, class: "registration-btn link-btn"
-              = link_to "ログイン", new_user_session_path, class: "login-btn link-btn"
+              = link_to "新規登録", new_user_registration_path, class: "registration-btn link-btn", data: {"turbolinks" => false}
+              = link_to "ログイン", new_user_session_path, class: "login-btn link-btn", data: {"turbolinks" => false}

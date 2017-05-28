@@ -1,0 +1,43 @@
+.container
+  .left-content
+    %p.root-path
+      = link_to "ブクログ ", root_path, class: "text-link link-btn", data: {"turbolinks" => false}
+      >
+      = link_to @user.name + "さんの本棚", user_path(@user),class: "text-link link-btn", data: {"turbolinks" => false}
+      >
+      = @user.name + "さんの本棚へのコメント"
+    .user-wrapper-profile
+      = render partial: "users/info"
+    .shlef-comments-area.clearfix
+      %ul.comments
+        - if @comments.length == 0
+          %span.non-comment
+            本棚へのコメントはまだありません。
+        - else
+          %p.comment-lead
+            コメント一覧
+          - @comments.each do |comment|
+            %li.comment
+              .user-icon-area
+                - if comment.user.image.blank?
+                  = link_to user_path(comment.user), data: {"turbolinks" => false} do
+                    = image_tag("prof_noimage.gif", class: "comment-user-img")
+                - else
+                  = link_to user_path(comment.user), data: {"turbolinks" => false} do
+                    = image_tag(comment.user.image, class: "comment-user-img")
+              .summary
+                .user-info-area
+                  = link_to user_path(comment.user), class: "users-page-link", data: {"turbolinks" => false} do
+                    = comment.user.name + "さん"
+                  のコメント
+                .comment-text
+                  = simple_format(comment.text)
+    = paginate(@comments)
+    .comment-create-area
+      %span.comment-create-area--lead
+        本棚へコメント
+        = form_for [@user, @shelf, @comment] do |f|
+          = f.text_area :text, class: "comment-area",placeholder: "コメントを入力してください"
+          .submit-area
+            = f.submit "コメントする", class: "comment-btn"
+  .right-content

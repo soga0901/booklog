@@ -19,9 +19,21 @@ class BooksController < ApplicationController
     @books = Book.where('title LIKE(?) OR author LIKE(?)', "%#{params[:info]}%", "#{params[:info]}%").page(params[:page]).per(10)
   end
 
+  def new
+    @book = Book.new
+  end
+
+  def create
+    Book.create(book_params)
+  end
+
   private
   def set_current_shelf
     @shelf = current_user.shelf
+  end
+
+  def book_params
+    params.require(:book).permit(:title, :author, :publisher, :image, :release_year, :release_month, :release_day, :price)
   end
 
 end

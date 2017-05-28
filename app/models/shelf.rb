@@ -3,4 +3,5 @@ class Shelf < ApplicationRecord
   has_many  :reviews
   has_many :books, through: :book_shelves
   has_many :book_shelves
+  has_many :comments
 end

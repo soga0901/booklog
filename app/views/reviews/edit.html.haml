@@ -1,8 +1,8 @@
 .container
   %p.root-path
-    = link_to "ブクログ ", root_path, class: "text-link"
+    = link_to "ブクログ ", root_path, class: "text-link", data: {"turbolinks" => false}
     = " > "
-    = link_to @review.book.title, book_path(@book), class: "text-link"
+    = link_to @review.book.title, book_path(@book), class: "text-link", data: {"turbolinks" => false}
     = " > " + current_user.name + "さんのレビュー > 登録情報の編集・削除"
   .left-content
     %h1#edit
@@ -12,7 +12,7 @@
         = image_tag(@book.image, class: "review-edit-book-img")
       .book-info-area
         %h2.book-title
-          = link_to book_path(@book), class: "book-title-link"  do
+          = link_to book_path(@book), class: "book-title-link", data: {"turbolinks" => false}  do
             = @book.title
         .book-author
           = @book.author
@@ -42,6 +42,6 @@
         %p#tab4-lead
           このアイテムを本棚から削除します。あなたのレビューや再読記録も削除されますが、フレーズは別途削除が必要です。
           .delete-from-shelf
-            = link_to book_shelf_path(@book_shelf), class: "delete-from-shelf-btn", method: :delete do
+            = link_to book_shelf_path(@book_shelf), class: "delete-from-shelf-btn", method: :delete, data: {"turbolinks" => false} do
               本棚から削除する
   .right-content
